@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import loadICon from "./assets/4990502.png";
-const Post = ({ currentPage, setTotalPosts }) => {
+const Users = ({ currentPage, setTotalPosts }) => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  let postsURL = "https://jsonplaceholder.typicode.com/posts";
+  let postsURL = "https://jsonplaceholder.typicode.com/users";
 
   useEffect(() => {
     setLoading(true);
@@ -35,11 +35,36 @@ const Post = ({ currentPage, setTotalPosts }) => {
         posts.map((each) => (
           <div className="card" key={each.id}>
             <div className="title">
-              <h1>{each.title}</h1>
+              <h1>{each.name}</h1>
               <hr style={{ margin: "0" }} />
             </div>
-            <div className="body">
-              <p>{each.body}</p>
+            <div className="user-body">
+              <p>
+                Username:{" "}
+                <span style={{ color: "rgb(206, 178, 95)" }}>
+                  {each.username}
+                </span>
+              </p>
+              <p>
+                Email:{" "}
+                <span style={{ color: "rgb(206, 178, 95)" }}>{each.email}</span>
+              </p>
+              <p>
+                Phone:{" "}
+                <span style={{ color: "rgb(206, 178, 95)" }}>{each.phone}</span>
+              </p>
+              <p>
+                Address:{" "}
+                <span style={{ color: "rgb(206, 178, 95)" }}>
+                  {each.address.city}
+                </span>
+              </p>
+              <p>
+                Website:{" "}
+                <span style={{ color: "rgb(206, 178, 95)" }}>
+                  {each.website}
+                </span>
+              </p>
             </div>
             <p>{each.id}</p>
           </div>
@@ -49,4 +74,4 @@ const Post = ({ currentPage, setTotalPosts }) => {
   );
 };
 
-export default Post;
+export default Users;

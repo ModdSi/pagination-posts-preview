@@ -2,6 +2,9 @@ import { useState } from "react";
 import "./App.css";
 import Post from "./post";
 import PaginationBar from "./paginationBar";
+import Todos from "./todos";
+import { Link, Outlet, Route, Routes } from "react-router";
+import Users from "./users";
 
 function App() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -17,9 +20,62 @@ function App() {
           margin: "70px",
         }}
       >
-        Randomly Generated Post via API
+        API Task{" "}
       </h1>
-      <Post currentPage={currentPage} setTotalPosts={setTotalPosts} />
+
+      <header>
+        <nav className="pagination">
+          <Link
+            onClick={() => setCurrentPage(0)}
+            id="link-btn"
+            style={{ padding: "10px" }}
+            to="/"
+          >
+            Posts
+          </Link>
+          <Link
+            onClick={() => setCurrentPage(0)}
+            id="link-btn"
+            style={{ padding: "10px" }}
+            to="/todos"
+          >
+            ToDos
+          </Link>
+          <Link
+            onClick={() => setCurrentPage(0)}
+            id="link-btn"
+            style={{ padding: "10px" }}
+            to="/users"
+          >
+            Users
+          </Link>
+        </nav>
+      </header>
+      <main>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Post currentPage={currentPage} setTotalPosts={setTotalPosts} />
+            }
+          />
+          <Route
+            path="/todos"
+            element={
+              <Todos currentPage={currentPage} setTotalPosts={setTotalPosts} />
+            }
+          />
+          <Route
+            path="/users"
+            element={
+              <Users currentPage={currentPage} setTotalPosts={setTotalPosts} />
+            }
+          />
+        </Routes>
+      </main>
+
+      {/* <Post currentPage={currentPage} setTotalPosts={setTotalPosts} /> */}
+      {/* <Todos currentPage={currentPage} setTotalPosts={setTotalPosts} /> */}
       <PaginationBar
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}

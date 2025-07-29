@@ -21,6 +21,21 @@ body {
   align-items: center;
 }
 
+.todo-card {
+  color: azure;
+  /* height: 300px; */
+  border-radius: 10px;
+  padding: 18px;
+  background-color: #1e1e1e;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 16px;
+  transition: scale 0.1s, background 0.3s;
+
+  font-family: "lamaSans";
+}
 .card {
   color: azure;
   width: 600px;
@@ -116,6 +131,21 @@ h3 {
   cursor: pointer;
 }
 
+#link-btn {
+  font-size: 22px;
+  margin: 4px;
+  border: none;
+
+  background-color: #1e1e1e;
+  color: rgb(206, 178, 95);
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+#link-btn:hover {
+  background-color: #161616;
+  scale: 1.1;
+}
 #pag-btn:hover {
   background-color: #161616;
   scale: 1.1;
@@ -128,4 +158,50 @@ h3 {
 #pag-btn:focus {
   outline: 1px solid rgb(206, 178, 95);
   background-color: #161616;
+}
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 10px;
+  user-select: none;
+  font-size: 16px;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-wrapper .checkmark {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #f5f5f5;
+  border-radius: 3px;
+  display: inline-block;
+  position: relative;
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked + .checkmark::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 4px;
+  width: 5px;
+  height: 10px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+hr {
+  width: 500px;
+}
+@media (max-width: 638px) {
+  .card,
+  .todo-card {
+    width: 400px;
+  }
+  hr {
+    width: 80%;
+  }
 }
